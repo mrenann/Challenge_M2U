@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.MovieDetailedActivity">
+
+    <ImageView
+        android:id="@+id/IvPoster"
+        android:layout_width="match_parent"
+        android:layout_height="400sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/poster_sample"
+        android:contentDescription="@string/movie_detailed_poster" />
+
+    <View
+        android:id="@+id/vPoster"
+        android:layout_width="match_parent"
+        android:layout_height="400sp"
+        android:background="@drawable/gradient_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        android:textSize="30sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        tools:text="@string/movie_text_sample"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/IvPoster"
+        app:layout_constraintEnd_toStartOf="@id/heartBtn"
+        app:layout_constraintTop_toBottomOf="@id/IvPoster"
+        android:id="@+id/tVmovietitle"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/heartBtn"
+        android:layout_width="45sp"
+        android:layout_height="45sp"
+        app:layout_constraintTop_toTopOf="@id/tVmovietitle"
+        android:layout_marginEnd="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_rawRes="@raw/heart"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"/>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/back_btn"
+        android:padding="7sp"
+        android:layout_margin="15sp"/>
+
+    <ImageView
+        android:id="@+id/iVLikesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_favorite_24"
+        android:layout_marginTop="15sp"
+        app:layout_constraintTop_toBottomOf="@id/tVmovietitle"
+        app:layout_constraintStart_toStartOf="@id/tVmovietitle"/>
+
+    <TextView
+        android:id="@+id/tVLikesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/iVLikesCount"
+        app:layout_constraintBottom_toBottomOf="@id/iVLikesCount"
+        app:layout_constraintTop_toTopOf="@id/iVLikesCount"
+        android:layout_marginStart="10sp"
+        tools:text="@string/Likes_text"
+        android:textSize="17sp"
+        android:textColor="@color/white"/>
+
+    <ImageView
+        android:id="@+id/iVPopularityCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_opacity_24"
+        android:layout_marginTop="15sp"
+        android:layout_marginStart="30sp"
+        app:layout_constraintTop_toBottomOf="@id/tVmovietitle"
+        app:layout_constraintStart_toEndOf="@id/tVLikesCount"/>
+
+    <TextView
+        android:id="@+id/tVPopularityCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/iVPopularityCount"
+        app:layout_constraintBottom_toBottomOf="@id/iVPopularityCount"
+        app:layout_constraintTop_toTopOf="@id/iVPopularityCount"
+        android:layout_marginStart="10sp"
+        android:text="@string/Views_Text"
+        android:textSize="17sp"
+        android:textColor="@color/white"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/iVLikesCount"
+        android:layout_marginTop="15sp"
+        tools:listitem="@layout/card_movie"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
