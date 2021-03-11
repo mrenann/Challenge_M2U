@@ -31,6 +31,10 @@ class MovieDetailedActivity : AppCompatActivity() {
 
         viewModelMovie.getMovie(movieId)
 
+        binding.IbBack.setOnClickListener {
+            onBackPressed()
+        }
+
         viewModelMovie.movieSucess.observe(this){
             movieDetails = it
 
