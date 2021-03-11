@@ -3,6 +3,7 @@ package com.mrenann.challengem2u.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mrenann.challengem2u.R
@@ -33,7 +34,7 @@ class SimilarAdapter(
     ): RecyclerView.ViewHolder(
         binding.root
     ) {
-
+        private var checked:Boolean = false
         fun bind(movie: MovieResult?, onMovieClicked: (MovieResult?) -> Unit) = with(binding) {
             Glide.with(itemView.context)
                 .load(movie?.posterPath)
@@ -43,6 +44,18 @@ class SimilarAdapter(
 
             binding.tVMovieName.text = movie?.title
             binding.tVMovieYear.text = movie?.releaseDate?.getFirst4Chars() ?: "Unknow"
+
+            binding.checkBtn.setOnClickListener {
+                it as LottieAnimationView
+                if(checked) {
+                    it.speed = -2f
+                    it.playAnimation()
+                } else {
+                    it.speed = 2f
+                    it.playAnimation()
+                }
+                checked = !checked
+            }
 
             itemView.setOnClickListener {
                 onMovieClicked(movie)
