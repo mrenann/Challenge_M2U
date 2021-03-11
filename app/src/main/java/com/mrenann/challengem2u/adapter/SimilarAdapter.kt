@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.mrenann.challengem2u.R
 import com.mrenann.challengem2u.databinding.CardMovieBinding
 import com.mrenann.challengem2u.extensions.getFirst4Chars
 import com.mrenann.challengem2u.model.movieDetailed.MovieResult
@@ -37,6 +38,7 @@ class SimilarAdapter(
             Glide.with(itemView.context)
                 .load(movie?.posterPath)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.logo)
                 .into(binding.iVPoster)
 
             binding.tVMovieName.text = movie?.title
