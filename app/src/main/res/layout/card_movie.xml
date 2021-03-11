@@ -56,5 +56,14 @@
         app:layout_constraintBottom_toBottomOf="@id/tVMovieYear"
         tools:text="@string/movie_genres_sample"/>
 
+    <View
+        android:id="@+id/viewHr"
+        android:layout_width="0sp"
+        android:layout_height="1sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tVMovieName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/bgLight" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
