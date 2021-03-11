@@ -1,0 +1,2 @@
+rootProject.name = "Challenge M2U"
+include ':app'
