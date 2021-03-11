@@ -21,4 +21,8 @@ class Constants {
         const val QUERY_PARAM_APPEND_VALUE = "recommendations,similar"
     }
 
+    object ConstantsFilms {
+        const val BASE_MOVIE_KEY = "Movie"
+    }
+
 }
