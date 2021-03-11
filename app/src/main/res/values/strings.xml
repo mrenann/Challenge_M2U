@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Challenge M2U</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_text_sample">A Nightmare on Elm Street</string>
+    <string name="movie_genres_sample">Horror</string>
+    <string name="movie_year_sample">1984</string>
 </resources>
