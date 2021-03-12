@@ -8,13 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.mrenann.challengem2u.R
 import com.mrenann.challengem2u.adapter.SimilarAdapter
 import com.mrenann.challengem2u.databinding.ActivityMovieDetailedBinding
-import com.mrenann.challengem2u.extensions.prettyCount
+import com.mrenann.challengem2u.extensions.formatNumbers
 import com.mrenann.challengem2u.model.movieDetailed.MovieDetailed
 import com.mrenann.challengem2u.model.movieGenres.GenresMovie
-import com.mrenann.challengem2u.utils.Constants.ConstantsFilms.BASE_GENRES_KEY
 import com.mrenann.challengem2u.utils.Constants.ConstantsFilms.BASE_MOVIE_KEY
 import com.mrenann.challengem2u.viewModel.MovieDetailedViewModel
 import com.mrenann.challengem2u.viewModel.MovieGenresViewModel
@@ -70,8 +68,8 @@ class MovieDetailedActivity : AppCompatActivity() {
                 .into(binding.IvPoster)
 
             binding.tVmovietitle.text = it.title
-            binding.tVLikesCount.text = "${it.vote_count?.let { votes -> prettyCount(votes) }} Likes"
-            binding.tVPopularityCount.text = "${it.popularity?.let { it1 -> prettyCount(it1.toInt()) }}/${it.popularity} Views"
+            binding.tVLikesCount.text = "${it.vote_count?.let { votes -> formatNumbers(votes) }} Likes"
+            binding.tVPopularityCount.text = "${it.popularity} Views"
 
             binding.rVSimilars.apply {
                 layoutManager = LinearLayoutManager(this@MovieDetailedActivity, LinearLayoutManager.VERTICAL, false)

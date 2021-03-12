@@ -10,7 +10,7 @@ fun String.getFirst4Chars():String{
     return "${this[0]}${this[1]}${this[2]}${this[3]}"
 }
 
-fun prettyCount(number: Int): String? {
+fun formatNumbers(number: Int): String? {
     val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
     val numValue = number.toLong()
     val value = Math.floor(Math.log10(numValue.toDouble())).toInt()
