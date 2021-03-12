@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mrenann.challengem2u.R
 import com.mrenann.challengem2u.adapter.SimilarAdapter
 import com.mrenann.challengem2u.databinding.ActivityMovieDetailedBinding
+import com.mrenann.challengem2u.extensions.prettyCount
 import com.mrenann.challengem2u.model.movieDetailed.MovieDetailed
 import com.mrenann.challengem2u.model.movieGenres.GenresMovie
 import com.mrenann.challengem2u.utils.Constants.ConstantsFilms.BASE_GENRES_KEY
@@ -69,8 +70,8 @@ class MovieDetailedActivity : AppCompatActivity() {
                 .into(binding.IvPoster)
 
             binding.tVmovietitle.text = it.title
-            binding.tVLikesCount.text = "${it.vote_count} Likes"
-            binding.tVPopularityCount.text = "${it.popularity} Views"
+            binding.tVLikesCount.text = "${it.vote_count?.let { it1 -> prettyCount(it1) }}/${it.vote_count} Likes"
+            binding.tVPopularityCount.text = "${it.popularity?.let { it1 -> prettyCount(it1.toInt()) }}/${it.popularity} Views"
 
             binding.rVSimilars.apply {
                 layoutManager = LinearLayoutManager(this@MovieDetailedActivity, LinearLayoutManager.VERTICAL, false)

@@ -56,6 +56,7 @@
         android:textSize="@dimen/movie_year_genres_textsize"
         android:layout_marginStart="15sp"
         app:layout_constraintStart_toEndOf="@id/tVMovieYear"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tVMovieYear"
         app:layout_constraintBottom_toBottomOf="@id/tVMovieYear"
         tools:text="@string/movie_genres_sample"/>

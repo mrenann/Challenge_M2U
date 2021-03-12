@@ -55,9 +55,8 @@ class SimilarAdapter(
 
             movie?.genreIds?.forEach { genreFilm ->
                 genres.genres.forEach { genre ->
-                    if (genre.id == genreFilm) {
-                        generosText += "${genre.name},"
-                    }
+                    if (genre.id == genreFilm) generosText += if(movie.genreIds.indexOf(genreFilm) == movie.genreIds.size-1) genre.name
+                    else "${genre.name}, "
                 }
             }
 
