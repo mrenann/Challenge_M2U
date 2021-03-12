@@ -2,19 +2,15 @@ package com.mrenann.challengem2u.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mrenann.challengem2u.R
-import com.mrenann.challengem2u.databinding.ActivitySplashBinding
 import com.mrenann.challengem2u.databinding.CardMovieBinding
 import com.mrenann.challengem2u.extensions.getFirst4Chars
 import com.mrenann.challengem2u.model.movieDetailed.MovieResult
 import com.mrenann.challengem2u.model.movieGenres.GenresMovie
-import com.mrenann.challengem2u.view.activity.MovieDetailedActivity
-import com.mrenann.challengem2u.viewModel.MovieGenresViewModel
 
 class SimilarAdapter(
     private var filmList: List<MovieResult>,

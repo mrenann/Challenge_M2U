@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class MovieDetailedViewModel: ViewModel() {
     val movieSucess: MutableLiveData<MovieDetailed> = MutableLiveData()
-    val movieError: MutableLiveData<String> = MutableLiveData()
+    private val movieError: MutableLiveData<String> = MutableLiveData()
 
     private val detailed by lazy {
         MovieDetailedBusiness()

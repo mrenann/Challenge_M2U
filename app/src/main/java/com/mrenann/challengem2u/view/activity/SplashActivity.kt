@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.lifecycle.ViewModelProvider
 import com.mrenann.challengem2u.R
 import com.mrenann.challengem2u.utils.Constants
-import com.mrenann.challengem2u.viewModel.MovieGenresViewModel
 
 class SplashActivity : AppCompatActivity() {
 

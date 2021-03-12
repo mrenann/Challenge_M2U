@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class MovieGenresViewModel: ViewModel() {
     val onResultGenres: MutableLiveData<GenresMovie> = MutableLiveData()
-    val onResultFailure: MutableLiveData<String> = MutableLiveData()
+    private val onResultFailure: MutableLiveData<String> = MutableLiveData()
 
     private val business by lazy {
         GenresMovieBusiness()

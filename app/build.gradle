@@ -59,7 +59,13 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
     implementation "com.airbnb.android:lottie:3.6.0"
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.4.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0-alpha04'
+    implementation 'org.mockito:mockito-core:2.27.0'
+    testImplementation 'org.mockito:mockito-inline:2.8.47'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "io.mockk:mockk:1.10.6"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
 }
