@@ -68,8 +68,8 @@ class MovieDetailedActivity : AppCompatActivity() {
                 .into(binding.IvPoster)
 
             binding.tVmovietitle.text = it.title
-            binding.tVLikesCount.text = "${it.vote_count?.let { votes -> formatNumbers(votes) }} Likes"
-            binding.tVPopularityCount.text = "${it.popularity} Views"
+            "${it.vote_count?.let { votes -> formatNumbers(votes) }} Likes".also {votesTotal-> binding.tVLikesCount.text = votesTotal }
+            (it.popularity.toString() + " Views").also { viewsTotl-> binding.tVPopularityCount.text = viewsTotl }
 
             binding.rVSimilars.apply {
                 layoutManager = LinearLayoutManager(this@MovieDetailedActivity, LinearLayoutManager.VERTICAL, false)

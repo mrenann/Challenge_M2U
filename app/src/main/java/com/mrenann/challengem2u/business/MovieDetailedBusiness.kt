@@ -1,13 +1,11 @@
 package com.mrenann.challengem2u.business
 
-import android.content.Context
 import com.mrenann.challengem2u.api.ResponseAPI
 import com.mrenann.challengem2u.extensions.getFullImagePath
 import com.mrenann.challengem2u.model.movieDetailed.MovieDetailed
-import com.mrenann.challengem2u.model.movieGenres.GenresMovie
 import com.mrenann.challengem2u.repository.MovieDetailedRepository
 
-class MovieDetailedBusiness(){
+class MovieDetailedBusiness{
 
     private val repository:MovieDetailedRepository by lazy {
         MovieDetailedRepository()

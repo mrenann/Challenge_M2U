@@ -1,8 +1,6 @@
 package com.mrenann.challengem2u.model.movieDetailed
 
 import android.os.Parcelable
-import com.example.madeinbrasil.model.result.Recommendations
-import com.example.madeinbrasil.model.result.Similar
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
