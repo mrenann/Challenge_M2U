@@ -18,8 +18,43 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object APIService {
-
+    val tmdbApi: TmdbAPI = getTMDbApiClient().create(TmdbAPI::class.java)
     val tmdbApiMovieDetailed: TmdbAPI= getTMDbApiClientMovieDetailed().create(TmdbAPI::class.java)
+
+    private fun getTMDbApiClient(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL_v3)
+            .client(getInterceptorClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    private fun getInterceptorClient(): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val interceptor = OkHttpClient.Builder()
+            .connectTimeout(5, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor { chain ->
+                val newRequest = chain.request().newBuilder()
+                    .addHeader(API_AUTH_NAME, API_AUTH_VALUE)
+                    .addHeader(API_CONTENT_TYPE_NAME, API_CONTENT_TYPE_VALUE)
+                    .build()
+                chain.proceed(newRequest)
+            }
+            .addInterceptor { chain ->
+                val url = chain.request().url.newBuilder()
+                    .addQueryParameter(QUERY_PARAM_LANGUAGE_LABEL, QUERY_PARAM_LANGUAGE_VALUE)
+                    .addQueryParameter(QUERY_PARAM_REGION_LABEL, QUERY_PARAM_REGION_VALUE)
+                    .build()
+                val newRequest = chain.request().newBuilder().url(url).build()
+                chain.proceed(newRequest)
+            }
+        return interceptor.build()
+    }
 
     private fun getTMDbApiClientMovieDetailed(): Retrofit {
         return Retrofit.Builder()

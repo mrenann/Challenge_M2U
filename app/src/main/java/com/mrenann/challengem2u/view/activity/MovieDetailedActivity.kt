@@ -12,12 +12,16 @@ import com.mrenann.challengem2u.R
 import com.mrenann.challengem2u.adapter.SimilarAdapter
 import com.mrenann.challengem2u.databinding.ActivityMovieDetailedBinding
 import com.mrenann.challengem2u.model.movieDetailed.MovieDetailed
+import com.mrenann.challengem2u.model.movieGenres.GenresMovie
+import com.mrenann.challengem2u.utils.Constants.ConstantsFilms.BASE_GENRES_KEY
 import com.mrenann.challengem2u.utils.Constants.ConstantsFilms.BASE_MOVIE_KEY
 import com.mrenann.challengem2u.viewModel.MovieDetailedViewModel
+import com.mrenann.challengem2u.viewModel.MovieGenresViewModel
 
 class MovieDetailedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailedBinding
     private var movieDetails: MovieDetailed? = null
+    private lateinit var viewModelGenres: MovieGenresViewModel
     private lateinit var viewModelMovie: MovieDetailedViewModel
     private var movieId: Int? = null
     private var hearted:Boolean = false
@@ -28,8 +32,10 @@ class MovieDetailedActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         movieId= intent.getIntExtra(BASE_MOVIE_KEY,372058)
-
         viewModelMovie = ViewModelProvider(this).get(MovieDetailedViewModel::class.java)
+
+        viewModelGenres = ViewModelProvider(this).get(MovieGenresViewModel::class.java)
+        viewModelGenres.getGenres()
 
         viewModelMovie.getMovie(movieId)
 
@@ -52,6 +58,11 @@ class MovieDetailedActivity : AppCompatActivity() {
         viewModelMovie.movieSucess.observe(this){
             movieDetails = it
 
+            var genresTotal:GenresMovie?=null
+            viewModelGenres.onResultGenres.observe(this){ genres->
+                genresTotal = genres
+            }
+
             Glide.with(this)
                 .load(it.poster_path)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -65,10 +76,12 @@ class MovieDetailedActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@MovieDetailedActivity, LinearLayoutManager.VERTICAL, false)
                 adapter = it.similar?.let { similares ->
                     similares.results?.let { listResults->
-                        SimilarAdapter(listResults) { result ->
-                            val intent = Intent(this@MovieDetailedActivity, MovieDetailedActivity::class.java)
-                            result?.let { resultLet -> intent.putExtra(BASE_MOVIE_KEY, resultLet.id) }
-                            startActivity(intent)
+                        genresTotal?.let { it1 ->
+                            SimilarAdapter(listResults, it1) { result ->
+                                val intent = Intent(this@MovieDetailedActivity, MovieDetailedActivity::class.java)
+                                result?.let { resultLet -> intent.putExtra(BASE_MOVIE_KEY, resultLet.id) }
+                                startActivity(intent)
+                            }
                         }
                     }
                 }

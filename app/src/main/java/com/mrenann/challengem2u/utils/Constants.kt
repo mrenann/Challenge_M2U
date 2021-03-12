@@ -23,6 +23,7 @@ class Constants {
 
     object ConstantsFilms {
         const val BASE_MOVIE_KEY = "Movie"
+        const val BASE_GENRES_KEY = "Genres"
     }
 
 }

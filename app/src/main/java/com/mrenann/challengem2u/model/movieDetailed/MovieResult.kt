@@ -12,6 +12,7 @@ import kotlinx.android.parcel.Parcelize
         var backdropPath: String?,
         @SerializedName("genre_ids")
         val genreIds: MutableList<Int>,
+        val genres:String?,
         var id: Int,
         @SerializedName("first_air_date")
         var firstAirDate: String?,
