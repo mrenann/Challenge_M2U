@@ -70,7 +70,7 @@ class MovieDetailedActivity : AppCompatActivity() {
                 .into(binding.IvPoster)
 
             binding.tVmovietitle.text = it.title
-            binding.tVLikesCount.text = "${it.vote_count?.let { it1 -> prettyCount(it1) }}/${it.vote_count} Likes"
+            binding.tVLikesCount.text = "${it.vote_count?.let { votes -> prettyCount(votes) }} Likes"
             binding.tVPopularityCount.text = "${it.popularity?.let { it1 -> prettyCount(it1.toInt()) }}/${it.popularity} Views"
 
             binding.rVSimilars.apply {
